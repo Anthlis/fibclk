@@ -1,0 +1,42 @@
+
+
+function test(input, expectedOutput) {
+
+var actualOutput = GetFibonacciParts(input);
+
+if (actualOutput != expectedOutput) {
+   error!
+}
+}
+
+test(0, []);
+test(1, [1]);
+test(2, [2]);
+test(3, [1,2]);
+test(4, [4]);
+
+
+var result = fibonaaciPartExtractor.GetFibonacciParts(1);
+
+
+fibonaaciPartExtractorMock = new Mock<FibonaaciPartExtractor>();
+
+fibonaaciPartExtractorMock
+   .Setup(m => m.GetFibonacciParts(1))
+   .Return([1,2,3,4]);
+   
+
+fibonaaciPartExtractorMock
+   .Setup(m => m.GetFibonacciParts(3))
+   .Return([1,2,5,6]);
+
+fibonacciTimeCalculator = new FibonacciTimeCalculator(fibonaaciPartExtractorMock.Object);
+var fibonacciTimeObject = fibonacciTimeCalculator.GetFibonacciParts(1:03);
+
+che
+
+test2(1:03, { hours: [1,2,3,4] minutes: [1, 2,5,6] })
+
+var output = GetLightColors(fibonacciTimeObject);
+
+[green, blue, yellow, white, red]

@@ -3,18 +3,15 @@ from pygame.locals import *
 import time
 
 def time_is_now():
-    now = time.localtime()
-    hour = now.tm_hour
-    min = now.tm_min
-    sec = now.tm_sec
+    hour = time.localtime().tm_hour
+    min = time.localtime().tm_min
+    sec = time.localtime().tm_sec
 
     return hour, min, sec
 
 
-def square_colour(testdict):
-    '''
-        This creates a dictionary so that blah blah blah
-    '''
+def light_colour(hour, min):
+    '''This creates a dictionary so that blah blah blah'''
     colour_dict = {
         0 : ['0', '0', '0', '0', '0'],
         1 : ['0', '0', '0', '0', '1'],
@@ -30,18 +27,18 @@ def square_colour(testdict):
         11 : ['1', '1', '1', '1', '0'],
         12 : ['1', '1', '1', '1', '1']
     }
-    return colour_dict.values(testdict)
+    return colour_dict.values()
 
 
 def and_gate(hour_colour, min_colour):
     if (hour_colour == '0') and (min_colour == '0'):
-        return white  # OFF
+        return white
     elif (hour_colour == '0') and (min_colour == '1'):
-        return blue   # MINS only
+        return blue
     elif (hour_colour == '1') and (min_colour == '0'):
-        return red    # HRS only
+        return red
     else:
-        return green  # HRS + MINS
+        return green
 
 
 
@@ -58,9 +55,22 @@ def main():
     window = pygame.display.set_mode((415, 265))
     pygame.display.set_caption("Anthony's Fibonacci Clock Project")
 
-    testdict = input("number between 0 & 12")
-    testdict = square_colour()
-    print(testdict)
+
+    # Here is where I'm testing by asserting the time as 10:30
+    # Expecting the result to be what light colours should be.
+
+    # test_hour = 10
+    test_hour = light_colour(10, 0)
+    print(test_hour)
+    hour_colour = test_hour
+
+    test_min = 30
+    test_min12 = light_colour(0, int(test_min/5))
+    print(test_min12)
+    min_colour = test_min12
+
+    hour_colour, min_colour = and_gate()
+    print(and_gate())
 
 
     while True:
